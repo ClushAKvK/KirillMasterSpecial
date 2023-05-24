@@ -31,7 +31,7 @@ public class Program {
     public static Function ansFunction;
 
     private void input() throws FileNotFoundException {
-        String path = Path.of("").toAbsolutePath() + "\\resources\\task5\\input1.txt";
+        String path = Path.of("").toAbsolutePath() + "\\resources\\task5\\input3.txt";
         File file = new File(path);
         Scanner sc = new Scanner(file);
         sc.useLocale(Locale.UK);

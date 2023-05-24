@@ -53,7 +53,8 @@ public class SixPointScheme {
             a.add(0.0);
             b.add(1.0);
             c.add(22220.0);
-            d.add(border2.getValueIn(l));
+//            d.add(border2.getValueIn(l));
+            d.add(border_approximation(border2, l, x_step));
 
             layer.add(new ArrayList<>());
 //            List<Double> temp = sweep_method(a, b, c, d);
@@ -97,5 +98,11 @@ public class SixPointScheme {
 
         return x;
     }
+
+
+    private static double border_approximation(Function border, double b, double h) {
+        return (border.getValueIn(b) - border.getValueIn(b - h)) / h;
+    }
+
 
 }

@@ -2,5 +2,5 @@
 0
 SIN(PI * x)
 0
-0
+1
 E^(-PI^2 * t) * SIN(PI * x)
