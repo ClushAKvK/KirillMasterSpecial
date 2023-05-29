@@ -22,17 +22,30 @@ import static com.company.task5.Main.Program.l;
 
 public class DrawFrame {
 
-    public static void draw(List<Dot> dots, Function ansFunc,double T) {
-        XYSeries series = new XYSeries("Something");
-        XYSeries series2 = new XYSeries("ans Something");
+    public static void draw(List<Dot> dots, List<Dot> dots1, Function ansFunc,double T) {
+        XYSeries series = new XYSeries("Чиленное решение");
+        XYSeries series2 = new XYSeries("Точное решение");
 
+        double max_discrepancy_2h = -1;
         for (int i = 0; i < dots.size(); i++) {
 //            if (dots.get(i).x <= l)
                 series.add(
                         dots.get(i).x,
                         dots.get(i).y
                 );
+            if (Math.abs(ansFunc.getValueIn(dots.get(i).x) - dots.get(i).y) > max_discrepancy_2h) {
+                max_discrepancy_2h = Math.abs(ansFunc.getValueIn(dots.get(i).x) - dots.get(i).y);
+            }
         }
+
+        double max_discrepancy_h = -1;
+        for (int i = 0; i < dots1.size(); i++) {
+            if (Math.abs(ansFunc.getValueIn(dots1.get(i).x) - dots1.get(i).y) > max_discrepancy_h) {
+                max_discrepancy_h = Math.abs(ansFunc.getValueIn(dots1.get(i).x) - dots1.get(i).y);
+            }
+        }
+
+        System.out.println(max_discrepancy_2h / max_discrepancy_h);
 
         for (double i = 0; i <= l + 0.001; i+=0.01) {
             series2.add(i, ansFunc.getValueIn(T, i));

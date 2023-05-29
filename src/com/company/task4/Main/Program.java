@@ -34,7 +34,7 @@ public class Program {
     public static Function ansFunction;
 
     private void input() throws FileNotFoundException {
-        String path = Path.of("").toAbsolutePath() + "\\resources\\task4\\input3.txt";
+        String path = Path.of("").toAbsolutePath() + "\\resources\\task4\\input2.txt";
         File file = new File(path);
         Scanner sc = new Scanner(file);
         sc.useLocale(Locale.UK);
@@ -65,7 +65,10 @@ public class Program {
         }
 
         List<Dot> dots = ShootingMethod.run(functions, a, b, A, B);
-        DrawFrame.draw(dots, ansFunction);
+
+        AdamsMethod.splits = 60;
+        List<Dot> dots1 = ShootingMethod.run(functions, a, b, A, B);
+        DrawFrame.draw(dots1, dots, ansFunction);
 //        List<List<Dot>> dots = AdamsMethod.run(functions, system_count, A, B, start);
 //        DrawFrame.draw(system_count, dots, ansFunctions);
 

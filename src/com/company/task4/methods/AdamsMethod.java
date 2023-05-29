@@ -10,7 +10,7 @@ import static java.lang.Math.*;
 
 public class AdamsMethod {
 
-    private final static double splits = 30;
+    public static double splits = 30;
 
     public static List<List<Dot>> dots;
 

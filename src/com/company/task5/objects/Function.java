@@ -31,7 +31,10 @@ public class Function {
     public double getValueIn(double valueX) {
         CalcObject result = parseFunction(expression);
 
-        result = subst(result, "x", valueX);
+        if (expression.contains("t"))
+            result = subst(result, "t", valueX);
+        if (expression.contains("x"))
+            result = subst(result, "x", valueX);
         result = CALC.SYM_EVAL(result);
 
         return Double.parseDouble(String.valueOf(result));

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SixPointScheme {
-    private final static int t_splits = 25;
-    private final static int x_splits = 20;
+    public static int t_splits = 25;
+    public static int x_splits = 20;
 
     public static List<Dot> dots = new ArrayList<>();
 

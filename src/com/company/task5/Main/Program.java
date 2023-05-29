@@ -8,6 +8,7 @@ import com.company.task5.objects.Function;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -31,7 +32,7 @@ public class Program {
     public static Function ansFunction;
 
     private void input() throws FileNotFoundException {
-        String path = Path.of("").toAbsolutePath() + "\\resources\\task5\\input3.txt";
+        String path = Path.of("").toAbsolutePath() + "\\resources\\task5\\input2.txt";
         File file = new File(path);
         Scanner sc = new Scanner(file);
         sc.useLocale(Locale.UK);
@@ -65,8 +66,15 @@ public class Program {
             e.printStackTrace();
         }
 
+
         List<Dot> dots = SixPointScheme.run(start, f, border, thermal_conductivity, l, T);
-        DrawFrame.draw(dots, ansFunction, T);
+
+        SixPointScheme.x_splits = 40;
+        SixPointScheme.t_splits = 45;
+        SixPointScheme.dots = new ArrayList<>();
+        List<Dot> dots1 = SixPointScheme.run(start, f, border, thermal_conductivity, l, T);
+
+        DrawFrame.draw(dots1, dots, ansFunction, T);
 //        List<Dot> dots = ShootingMethod.run(functions, a, b, A, B);
 //        DrawFrame.draw(dots, ansFunction);
 //        List<List<Dot>> dots = AdamsMethod.run(functions, system_count, A, B, start);
